@@ -36,11 +36,11 @@ syn match hsTypeName "\[\]"
 syn keyword hsFIXME contained FIXME TODO XXX BUG NOTE
 
 " Comment stuff
-syn region hsPragma start='{-#' end='#-}'
 syn region hsBlockComment start='{-' end='-}' fold contains=hsFIXME,hsBlockComment,@Spell
 " FIXME: haddock block comments should be able to contain hsBlockComments, but
 " it doesn't seem to work at the moment.
 syn region hsHaddockComment start='{-|' end='-}' contains=hsFIXME,@Spell
+syn region hsPragma start='{-#' end='#-}'
 syn match hsLineComment "--.*$" contains=hsFIXME,@Spell
 " Line-based haddock comments are trickier - they continue until
 " the next line that isn't part of the same block of comments.
@@ -127,9 +127,9 @@ if version >= 508 || !exists('did_hs_syntax_inits')
   " Comments
   HiLink hsLineComment Comment
   HiLink hsBlockComment Comment
-  HiLink hsPragma Comment
-  HiLink hsHaddockComment SpecialComment
-  HiLink hsHaddockSection SpecialComment
+  HiLink hsPragma SpecialComment
+  HiLink hsHaddockComment Comment
+  HiLink hsHaddockSection Comment
 
   HiLink hsKeyword Keyword
   HiLink hsConditional Conditional
